@@ -25,9 +25,18 @@ padding:30px;
 }
 
 textarea{
+    width:100%;
+    min-height:220px;
+    padding:20px;
+    font-size:18px;
+
     border:2px solid #ddd;
     border-radius:18px;
+
     transition:.3s;
+    resize:vertical;
+    display:block;
+    box-sizing:border-box;
 }
 
 textarea:focus{
