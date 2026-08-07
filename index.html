@@ -284,7 +284,14 @@ Hukuki bilgilendirme ve yönlendirme platformu
 function baslat() {
 document.getElementById("baslatBtn").innerHTML = "🦉 HAKA analiz ediyor...";
   let sorun = document.getElementById("sorun").value.trim();
-
+let metin = sorun.toLowerCase();
+  if (
+    metin.includes("kira") ||
+    metin.includes("ev sahibi") ||
+    metin.includes("depozito")
+) {
+    console.log("Kira Modülü");
+  }
   if (sorun === "") {
     alert("Lütfen yaşadığın sorunu anlat.");
     return;
@@ -300,10 +307,7 @@ document.getElementById("baslatBtn").innerHTML = "🦉 HAKA analiz ediyor...";
 
 }, 2000);
 
-  window.scrollTo({
-    top: document.getElementById("sorular").offsetTop,
-    behavior: "smooth"
-  });
+
 }
 
 function sonucGoster() {
