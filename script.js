@@ -1,74 +1,62 @@
 function analizEt() {
 
-const metin = document.getElementById("sorun").value.toLowerCase();
+    const metin = document.getElementById("sorun").value.toLowerCase();
 
-let sonuc = "";
+    let sonuc = "";
 
-if(
-metin.includes("kira") ||
-metin.includes("ev sahibi") ||
-metin.includes("kiracı") ||
-metin.includes("depozito")
-){
+    if (
+        metin.includes("kira") ||
+        metin.includes("kiracı") ||
+        metin.includes("ev sahibi") ||
+        metin.includes("depozito")
+    ) {
 
-sonuc = kiraAnalizi(metin);
+        sonuc = kiraAnalizi(metin);
 
-}
-else if(
-metin.includes("iş") ||
-metin.includes("maaş") ||
-metin.includes("tazminat") ||
-metin.includes("sgk")
-){
+    } else if (
+        metin.includes("iş") ||
+        metin.includes("maaş") ||
+        metin.includes("sgk") ||
+        metin.includes("tazminat")
+    ) {
 
-sonuc = isAnalizi(metin);
+        sonuc = isAnalizi(metin);
 
-}
-else if(
-metin.includes("market") ||
-metin.includes("ürün") ||
-metin.includes("fiş") ||
-metin.includes("ayıplı")
-){
+    } else if (
+        metin.includes("market") ||
+        metin.includes("ürün") ||
+        metin.includes("fiş") ||
+        metin.includes("ayıplı")
+    ) {
 
-sonuc = marketAnalizi(metin);
+        sonuc = marketAnalizi(metin);
 
-}
-else if(
-metin.includes("banka") ||
-metin.includes("kredi") ||
-metin.includes("hesap") ||
-metin.includes("bloke")
-){
+    } else if (
+        metin.includes("trafik") ||
+        metin.includes("araba") ||
+        metin.includes("araç") ||
+        metin.includes("park")
+    ) {
 
-sonuc = bankaAnalizi(metin);
+        sonuc = trafikAnalizi(metin);
 
-}
-else if(
-metin.includes("trafik") ||
-metin.includes("araba") ||
-metin.includes("araç") ||
-metin.includes("park")
-){
+    } else if (
+        metin.includes("aile") ||
+        metin.includes("boşanma") ||
+        metin.includes("velayet")
+    ) {
 
-sonuc = trafikAnalizi(metin);
+        sonuc = aileAnalizi(metin);
 
-}
-else if(
-metin.includes("aile") ||
-metin.includes("boşanma") ||
-metin.includes("velayet")
-){
+    } else {
 
-sonuc = aileAnalizi(metin);
+        sonuc = `
+        <h2>HakAsistan</h2>
+        <p>Bu konu için analiz hazırlanıyor.</p>
+        `;
 
-}
-else{
+    }
 
-sonuc = "<h2>HakAsistan</h2><p>Bu konu için analiz hazırlanıyor.</p>";
-
-}
-
-document.getElementById("sonuc").innerHTML = sonuc;
+    document.getElementById("sonuc").innerHTML = sonuc;
 
 }
