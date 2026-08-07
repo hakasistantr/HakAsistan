@@ -252,7 +252,25 @@ color:#1d4ed8;
 #sonuc li{
     margin:10px 0;
 }
+.logo{
+    font-size:64px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:5px;
+}
 
+.marka{
+    font-size:28px;
+    font-weight:700;
+    opacity:.95;
+    margin-bottom:8px;
+}
+
+.aciklama{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:20px;
+}
 #sonuc strong{
     color:#b30012;
 }
