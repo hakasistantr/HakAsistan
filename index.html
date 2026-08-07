@@ -1,666 +1,72 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>HakAsistan</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-background:#f5f7fb;
-color:#172033;
-}
-
-header{
-background:#172033;
-color:white;
-padding:20px;
-text-align:center;
-font-size:28px;
-font-weight:bold;
-}
-
-.hero{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-text-align:center;
-}
-
-.hero h1{
-font-size:40px;
-margin-bottom:15px;
-}
-
-.hero p{
-font-size:18px;
-color:#666;
-line-height:1.6;
-margin-bottom:30px;
-}
-
-textarea{
-width:100%;
-height:150px;
-padding:18px;
-font-size:17px;
-border-radius:15px;
-border:2px solid #ddd;
-resize:none;
-}
-
-button{
-margin-top:20px;
-background:#5b4bdb;
-color:white;
-border:none;
-padding:16px 35px;
-font-size:18px;
-border-radius:12px;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-background:#4533d8;
-}
-
-.kartlar{
-display:flex;
-justify-content:center;
-gap:18px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-
-.kart{
-background:white;
-padding:20px;
-width:170px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-font-weight:bold;
-}
-
-.sonuc{
-display:none;
-max-width:900px;
-margin:40px auto;
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-.soru{
-margin-top:25px;
-}
-
-.soru strong{
-display:block;
-margin-bottom:8px;
-}
-
-.soru input{
-width:100%;
-padding:13px;
-border:1px solid #ddd;
-border-radius:10px;
-font-size:16px;
-}
-
-footer{
-margin-top:60px;
-background:#172033;
-color:white;
-padding:30px;
-text-align:center;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-  <header>
-⚖️ HakAsistan
+
+<header>
+<h1>⚖️ HakAsistan</h1>
+<p>Yapay Zekâ Destekli Hukuki Değerlendirme</p>
 </header>
 
 <section class="hero">
 
-<h1>Sorununu anlat.<br>Haklarını öğren.</h1>
-
-<p>
-Yaşadığın hukuki sorunu kendi cümlelerinle yaz.
-HakAsistan sana doğru soruları sorarak yol haritanı oluştursun.
-</p>
-
 <textarea
 id="sorun"
-placeholder="Örneğin:
-• Ev sahibim depozitomu vermiyor.
-• İşten çıkarıldım.
-• Market benden fazla ücret aldı.
-• Trafikte hatalı park var.
-• Banka hesabıma bloke koydu.
-"></textarea>
+placeholder="Sorununuzu ayrıntılı şekilde yazınız..."></textarea>
 
-<button id="baslatBtn" onclick="baslat()">
-🤖 HAKA Analiz Et
+<button onclick="analizEt()">
+Analiz Et
 </button>
-
-<div class="kartlar">
-
-<div class="kart">
-📚<br><br>
-Resmi Kaynaklar
-</div>
-
-<div class="kart">
-⚖️<br><br>
-Tarafsız Analiz
-</div>
-
-<div class="kart">
-📝<br><br>
-Dilekçe Desteği
-</div>
-
-<div class="kart">
-🏛️<br><br>
-Doğru Kurum
-</div>
-
-</div>
 
 </section>
 
-<div id="sorular" class="sonuc">
+<section class="kartlar">
 
-<h2>📋 Önce birkaç bilgiye ihtiyacımız var</h2>
+<div class="kart">🏠 Kira Hukuku</div>
+<div class="kart">👷 İş Hukuku</div>
+<div class="kart">🛒 Tüketici</div>
+<div class="kart">🏦 Banka</div>
+<div class="kart">🚗 Trafik</div>
+<div class="kart">🏛 Kamu</div>
+<div class="kart">🏡 Tapu</div>
+<div class="kart">📜 Miras</div>
+<div class="kart">👨‍👩‍👧 Aile</div>
+<div class="kart">💰 Dolandırıcılık</div>
+<div class="kart">🧾 Market Şikayetleri</div>
+<div class="kart">📝 Dilekçe Oluştur</div>
 
-<p>
-Sana daha doğru yardımcı olabilmemiz için aşağıdaki soruları cevapla.
-</p>
+</section>
 
-<div id="soruAlani">
+<section id="sonuc">
 
-</div>
-
-<button onclick="sonucGoster()">
-Durumu Değerlendir →
-</button>
-
-</div>
-
-<div id="sonuc" class="sonuc">
-
-<h2>📄 İlk Değerlendirme</h2>
-
-<div id="sonucMetni">
-
-HakAsistan analiz hazırlıyor...
-
-</div>
-
-</div>
+</section>
 
 <footer>
 
-HAK ASİSTAN © 2026
-
-<br><br>
-
-Yapay zekâ destekli hukuki bilgilendirme platformu
+HakAsistan © 2026
 
 </footer>
-<script>
 
-function baslat(){
-
-let sorun=document.getElementById("sorun").value.trim().toLowerCase();
-
-if(sorun==""){
-alert("Lütfen yaşadığın sorunu yaz.");
-return;
-}
-
-let modul="genel";
-
-/* KİRA */
-
-if(
-sorun.includes("kira")||
-sorun.includes("ev sahibi")||
-sorun.includes("depozito")||
-sorun.includes("tahliye")||
-sorun.includes("kiracı")
-){
-modul="kira";
-}
-
-/* TÜKETİCİ */
-
-else if(
-sorun.includes("market")||
-sorun.includes("fiş")||
-sorun.includes("ürün")||
-sorun.includes("ayıplı")||
-sorun.includes("iade")||
-sorun.includes("garanti")||
-sorun.includes("fiyat")
-){
-modul="tuketici";
-}
-
-/* İŞ */
-
-else if(
-sorun.includes("işten")||
-sorun.includes("çıkarıld")||
-sorun.includes("maaş")||
-sorun.includes("kıdem")||
-sorun.includes("ihbar")||
-sorun.includes("tazminat")
-){
-modul="is";
-}
-
-/* BANKA */
-
-else if(
-sorun.includes("banka")||
-sorun.includes("kredi")||
-sorun.includes("hesap")||
-sorun.includes("bloke")||
-sorun.includes("kart")
-){
-modul="banka";
-}
-
-/* TRAFİK */
-
-else if(
-sorun.includes("trafik")||
-sorun.includes("araç")||
-sorun.includes("park")||
-sorun.includes("kaza")||
-sorun.includes("ehliyet")
-){
-modul="trafik";
-}
-
-/* DEVLET */
-
-else if(
-sorun.includes("belediye")||
-sorun.includes("muhtarlık")||
-sorun.includes("kaymakamlık")||
-sorun.includes("bakanlık")
-){
-modul="devlet";
-}
-
-document.getElementById("sorular").style.display="block";
-
-document.getElementById("soruAlani").innerHTML="";
-/* ===========================
-   MODÜLE GÖRE SORULAR
-=========================== */
-
-if(modul=="kira"){
-
-document.querySelector("#sorular h2").innerHTML="🏠 Kira Hukuku Analizi";
-
-document.getElementById("soruAlani").innerHTML=`
-
-<div class="soru">
-<strong>1. Yazılı kira sözleşmeniz var mı?</strong>
-<input id="kira1" placeholder="Evet / Hayır">
-</div>
-
-<div class="soru">
-<strong>2. Depozito ne kadar?</strong>
-<input id="kira2" placeholder="Örn: 25.000 TL">
-</div>
-
-<div class="soru">
-<strong>3. Evi ne zaman tahliye ettiniz?</strong>
-<input id="kira3" placeholder="GG/AA/YYYY">
-</div>
-
-<div class="soru">
-<strong>4. Ev sahibi neden iade etmiyor?</strong>
-<input id="kira4" placeholder="Kısaca anlat">
-</div>
-
-`;
-
-}
-
-else if(modul=="is"){
-
-document.querySelector("#sorular h2").innerHTML="💼 İş Hukuku Analizi";
-
-document.getElementById("soruAlani").innerHTML=`
-
-<div class="soru">
-<strong>1. Kaç yıldır çalışıyordunuz?</strong>
-<input id="is1">
-</div>
-
-<div class="soru">
-<strong>2. SGK girişiniz var mı?</strong>
-<input id="is2">
-</div>
-
-<div class="soru">
-<strong>3. Tazminat ödendi mi?</strong>
-<input id="is3">
-</div>
-
-<div class="soru">
-<strong>4. İşten çıkarılma nedeni ne söylendi?</strong>
-<input id="is4">
-</div>
-
-`;
-
-}
-
-else if(modul=="tuketici"){
-
-document.querySelector("#sorular h2").innerHTML="🛒 Tüketici Hukuku Analizi";
-
-document.getElementById("soruAlani").innerHTML=`
-
-<div class="soru">
-<strong>1. Ürünü nereden aldınız?</strong>
-<input id="t1">
-</div>
-
-<div class="soru">
-<strong>2. Fişiniz var mı?</strong>
-<input id="t2">
-</div>
-
-<div class="soru">
-<strong>3. Üründe sorun nedir?</strong>
-<input id="t3">
-</div>
-
-<div class="soru">
-<strong>4. Satıcıya başvurdunuz mu?</strong>
-<input id="t4">
-</div>
-
-`;
-
-}
-  else if(modul=="banka"){
-
-document.querySelector("#sorular h2").innerHTML="🏦 Banka ve Finans Analizi";
-
-document.getElementById("soruAlani").innerHTML=`
-
-<div class="soru">
-<strong>1. Sorun hangi banka ile ilgili?</strong>
-<input id="b1" placeholder="Örneğin: Ziraat Bankası">
-</div>
-
-<div class="soru">
-<strong>2. Sorun kredi mi, hesap mı, kart mı?</strong>
-<input id="b2" placeholder="Kredi / Hesap / Kart">
-</div>
-
-<div class="soru">
-<strong>3. Maddi tutar ne kadar?</strong>
-<input id="b3" placeholder="Örneğin: 18.500 TL">
-</div>
-
-<div class="soru">
-<strong>4. Bankaya itiraz ettiniz mi?</strong>
-<input id="b4" placeholder="Evet / Hayır">
-</div>
-
-`;
-
-}
-
-else if(modul=="trafik"){
-
-document.querySelector("#sorular h2").innerHTML="🚗 Trafik ve Ulaşım Analizi";
-
-document.getElementById("soruAlani").innerHTML=`
-
-<div class="soru">
-<strong>1. Olay nerede meydana geldi?</strong>
-<input id="tr1" placeholder="Cadde / Sokak">
-</div>
-
-<div class="soru">
-<strong>2. Olay nedir?</strong>
-<input id="tr2" placeholder="Hatalı park, tehlikeli sürüş vb.">
-</div>
-
-<div class="soru">
-<strong>3. Fotoğraf veya video var mı?</strong>
-<input id="tr3" placeholder="Evet / Hayır">
-</div>
-
-<div class="soru">
-<strong>4. Plaka biliyor musunuz?</strong>
-<input id="tr4" placeholder="Varsa yazınız">
-</div>
-
-`;
-
-}
-
-else if(modul=="devlet"){
-
-document.querySelector("#sorular h2").innerHTML="🏛️ Kamu Kurumu Analizi";
-
-document.getElementById("soruAlani").innerHTML=`
-
-<div class="soru">
-<strong>1. Hangi kurumla sorun yaşıyorsunuz?</strong>
-<input id="d1" placeholder="Belediye, Kaymakamlık...">
-</div>
-
-<div class="soru">
-<strong>2. Sorun nedir?</strong>
-<input id="d2" placeholder="Kısaca anlatın">
-</div>
-
-<div class="soru">
-<strong>3. Daha önce başvuru yaptınız mı?</strong>
-<input id="d3" placeholder="Evet / Hayır">
-</div>
-
-<div class="soru">
-<strong>4. Elinizde belge var mı?</strong>
-<input id="d4" placeholder="Evet / Hayır">
-</div>
-
-`;
-
-}
-
-else{
-
-document.querySelector("#sorular h2").innerHTML="📋 Genel Hukuki Değerlendirme";
-
-document.getElementById("soruAlani").innerHTML=`
-
-<div class="soru">
-<strong>Lütfen sorununu biraz daha ayrıntılı anlat.</strong>
-<input id="g1" placeholder="Detay yaz">
-</div>
-
-`;
-
-}
-setTimeout(function(){
-
-document.getElementById("sorular").style.display="block";
-
-window.scrollTo({
-
-top:document.getElementById("sorular").offsetTop,
-
-behavior:"smooth"
-
-});
-
-},800);
-
-}
-
-/* ==========================
-   SONUÇ OLUŞTUR
-========================== */
-
-function sonucGoster(){
-
-let metin=document.getElementById("sorun").value.toLowerCase();
-
-let sonuc="";
-
-if(
-metin.includes("kira")||
-metin.includes("depozito")||
-metin.includes("ev sahibi")
-){
-
-sonuc=`
-<h3>🏠 İlk Hukuki Değerlendirme</h3>
-
-<p>
-Anlattığınız konu kira hukukuna ilişkin görünüyor.
-Depozito, tahliye veya kira sözleşmesiyle ilgili haklarınız
-Türk Borçlar Kanunu kapsamında değerlendirilebilir.
-</p>
-
-<p><b>Önerilen Belgeler</b></p>
-
-<ul>
-<li>Kira sözleşmesi</li>
-<li>Dekontlar</li>
-<li>Mesaj kayıtları</li>
-<li>Fotoğraflar</li>
-</ul>
-`;
-
-}
-
-else if(
-metin.includes("işten")||
-metin.includes("maaş")||
-metin.includes("tazminat")
-){
-
-sonuc=`
-<h3>💼 İlk Hukuki Değerlendirme</h3>
-
-<p>
-
-İş hukuku kapsamında kıdem, ihbar,
-fazla mesai veya işe iade haklarınız
-bulunabilir.
-
-</p>
-
-<p><b>Hazırlamanız gereken belgeler:</b></p>
-
-<ul>
-
-<li>SGK hizmet dökümü</li>
-
-<li>Maaş bordroları</li>
-
-<li>İş sözleşmesi</li>
-
-<li>Fesih bildirimi</li>
-
-</ul>
-
-`;
-
-}
-else if(
-metin.includes("ürün")||
-metin.includes("ayıplı")||
-metin.includes("iade")||
-metin.includes("fiş")
-){
-
-sonuc=`
-<h3>🛒 İlk Hukuki Değerlendirme</h3>
-
-<p>
-6502 sayılı Tüketicinin Korunması Hakkında Kanun kapsamında
-ayıplı mal veya hizmet söz konusu olabilir.
-</p>
-
-<ul>
-<li>Fişi saklayın.</li>
-<li>Ürünün fotoğrafını çekin.</li>
-<li>Satıcıya yazılı başvuru yapın.</li>
-<li>Gerekirse Tüketici Hakem Heyetine başvurun.</li>
-</ul>
-`;
-
-}
-
-else if(
-metin.includes("banka")||
-metin.includes("kredi")||
-metin.includes("hesap")||
-metin.includes("bloke")
-){
-
-sonuc=`
-<h3>🏦 İlk Hukuki Değerlendirme</h3>
-
-<p>
-Bankacılık işlemleriyle ilgili uyuşmazlık söz konusu olabilir.
-</p>
-
-<ul>
-<li>Banka dekontlarını saklayın.</li>
-<li>Bankaya yazılı itiraz edin.</li>
-<li>Cevap gelmezse BDDK veya Tüketici Hakem Heyeti değerlendirilebilir.</li>
-</ul>
-`;
-
-}
-
-else if(
-metin.includes("trafik")||
-metin.includes("park")||
-metin.includes("araba")||
-metin.includes("araç")
-){
-
-sonuc=`
-<h3>🚗 İlk Hukuki Değerlendirme</h3>
-
-<p>
-Trafik ihlali veya kamu güvenliğini ilgilendiren bir durum olabilir.
-</p>
-
-<ul>
-<li>Fotoğraf veya video alın.</  
+<script src="script.js"></script>
+<script src="analiz.js"></script>
+<script src="dilekce.js"></script>
+<script src="kanunlar.js"></script>
+<script src="kamera.js"></script>
+<script src="pdf.js"></script>
+<script src="market.js"></script>
+<script src="trafik.js"></script>
+<script src="kira.js"></script>
+<script src="is.js"></script>
+<script src="aile.js"></script>
+
+</body>
+</html>
