@@ -60,5 +60,6 @@ buton.disabled = true;
     }
 
     document.getElementById("sonuc").innerHTML = sonuc;
-
+buton.innerHTML = "⚖️ HAKA ANALİZİNİ BAŞLAT";
+buton.disabled = false;
 }
