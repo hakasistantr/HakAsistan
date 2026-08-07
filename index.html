@@ -290,7 +290,7 @@ let metin = sorun.toLowerCase();
     metin.includes("ev sahibi") ||
     metin.includes("depozito")
 ) {
-    console.log("Kira Modülü");
+  document.querySelector("#sorular h2").innerHTML = "🏠 Kira ve Depozito Analizi";
   }
   if (sorun === "") {
     alert("Lütfen yaşadığın sorunu anlat.");
