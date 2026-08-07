@@ -164,7 +164,7 @@ HakAsistan sana doğru adımları bulmanda yardımcı olsun.
 
 <textarea id="sorun" placeholder="Örneğin: Ev sahibim depozitomu vermiyor."></textarea>
 
-<button onclick="baslat()">
+<button id="baslatBtn" onclick="baslat()">
 Haklarımı Öğren →
 </button>
 
@@ -282,7 +282,7 @@ Hukuki bilgilendirme ve yönlendirme platformu
 <script>
 
 function baslat() {
-
+document.getElementById("baslatBtn").innerHTML = "🦉 HAKA analiz ediyor...";
   let sorun = document.getElementById("sorun").value.trim();
 
   if (sorun === "") {
@@ -290,7 +290,15 @@ function baslat() {
     return;
   }
 
-  document.getElementById("sorular").style.display = "block";
+  setTimeout(function () {
+    document.getElementById("sorular").style.display = "block";
+
+    window.scrollTo({
+        top: document.getElementById("sorular").offsetTop,
+        behavior: "smooth"
+    });
+
+}, 2000);
 
   window.scrollTo({
     top: document.getElementById("sorular").offsetTop,
