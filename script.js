@@ -1,5 +1,7 @@
 function analizEt() {
-
+const buton = document.querySelector("button");
+buton.innerHTML = "⏳ HAKA Düşünüyor...";
+buton.disabled = true;
     const metin = document.getElementById("sorun").value.toLowerCase();
 
     let sonuc = "";
