@@ -1,50 +1,19 @@
-// ===============================
-// HAKASİSTAN - KİRA MODÜLÜ
-// ===============================
+function kiraAnalizi(metin){
 
-const KiraModulu = {
+return `
+<h2>🏠 Kira Hukuku Analizi</h2>
 
-  kontrol(metin) {
+<p>
+Anlattığınız konu kira hukuku kapsamında değerlendirilebilir.
+</p>
 
-    metin = metin.toLowerCase();
+<ul>
+<li>✅ Kira sözleşmesini saklayın.</li>
+<li>✅ Depozito dekontunu saklayın.</li>
+<li>✅ Yazışmaları ve mesajları saklayın.</li>
+<li>✅ Gerekirse Sulh Hukuk Mahkemesi veya Arabuluculuk yoluna başvurabilirsiniz.</li>
+</ul>
 
-    return (
-      metin.includes("kira") ||
-      metin.includes("kiracı") ||
-      metin.includes("ev sahibi") ||
-      metin.includes("depozito") ||
-      metin.includes("tahliye") ||
-      metin.includes("kontrat") ||
-      metin.includes("sözleşme")
-    );
+`;
 
-  },
-
-  analiz() {
-
-    return `
-    <h2>🏠 Kira Hukuku Analizi</h2>
-
-    <p>
-    Yazdığınız konu kira hukukuyla ilgili görünüyor.
-    </p>
-
-    <h3>İlk Yapılması Gerekenler</h3>
-
-    <ul>
-      <li>Kira sözleşmesini saklayın.</li>
-      <li>Dekontları hazırlayın.</li>
-      <li>Mesaj kayıtlarını saklayın.</li>
-      <li>Fotoğraf varsa ekleyin.</li>
-    </ul>
-
-    <h3>HakAsistan Önerisi</h3>
-
-    <p>
-    Belgeler incelendikten sonra hukuki yol haritası oluşturulabilir.
-    </p>
-    `;
-
-  }
-
-};
+}
