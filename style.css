@@ -228,3 +228,31 @@ color:#1d4ed8;
     text-transform:uppercase;
     letter-spacing:1px;
 }
+#sonuc{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    margin-top:35px;
+    border-left:8px solid #c40018;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    line-height:1.8;
+    font-size:17px;
+}
+
+#sonuc h2{
+    color:#b30012;
+    margin-bottom:15px;
+}
+
+#sonuc ul{
+    margin-top:15px;
+    padding-left:25px;
+}
+
+#sonuc li{
+    margin:10px 0;
+}
+
+#sonuc strong{
+    color:#b30012;
+}
