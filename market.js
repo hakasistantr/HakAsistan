@@ -1,4 +1,4 @@
-function marketAnalizi(metin){
+function marketAnalizi(metin) {
 
 return `
 <h2>🛒 Tüketici Hukuku Analizi</h2>
@@ -12,6 +12,8 @@ return `
 <li>✅ Gerekirse Tüketici Hakem Heyetine başvurun.</li>
 </ul>
 
+<p><b>HakAsistan Ön Değerlendirmesi:</b><br>
+Bu değerlendirme yalnızca bilgilendirme amaçlıdır.</p>
 `;
 
 }
