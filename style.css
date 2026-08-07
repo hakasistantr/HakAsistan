@@ -34,19 +34,28 @@ resize:vertical;
 }
 
 button{
-margin-top:15px;
 width:100%;
-padding:15px;
-font-size:18px;
-background:#0b63ce;
-color:white;
+padding:18px;
+margin-top:20px;
 border:none;
-border-radius:10px;
+border-radius:18px;
+background:linear-gradient(135deg,#E30A17,#B30012);
+color:white;
+font-size:20px;
+font-weight:700;
 cursor:pointer;
+transition:.35s;
+box-shadow:0 12px 25px rgba(227,10,23,.35);
 }
 
 button:hover{
-background:#084ea5;
+
+transform:translateY(-4px) scale(1.02);
+
+box-shadow:0 18px 40px rgba(227,10,23,.55);
+
+background:linear-gradient(135deg,#ff2736,#c40018);
+
 }
 
 .kartlar{
