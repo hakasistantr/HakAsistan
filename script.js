@@ -58,7 +58,11 @@ buton.disabled = true;
         `;
 
     }
-
+sonuc = `
+<div class="rapor">
+${sonuc}
+</div>
+`;
     document.getElementById("sonuc").innerHTML = sonuc;
 buton.innerHTML = "⚖️ HAKA ANALİZİNİ BAŞLAT";
 buton.disabled = false;
