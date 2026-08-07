@@ -1,126 +1,268 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAK Asistan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAK ASİSTAN</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      color: #172033;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+  text-align: center;
+}
 
-    header {
-      background: white;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
+header {
+  background: white;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
 
-    .hero {
-      padding: 60px 20px;
-    }
+.hero {
+  padding: 45px 20px;
+}
 
-    .maskot {
-      font-size: 70px;
-    }
+.maskot {
+  font-size: 65px;
+}
 
-    h1 {
-      font-size: 38px;
-      margin: 15px 0;
-    }
+h1 {
+  font-size: 36px;
+  margin: 15px 0;
+}
 
-    p {
-      color: #60697a;
-      font-size: 18px;
-    }
+.aciklama {
+  max-width: 650px;
+  margin: auto;
+  color: #60697a;
+  font-size: 18px;
+  line-height: 1.6;
+}
 
-    textarea {
-      width: 90%;
-      max-width: 650px;
-      height: 140px;
-      margin-top: 25px;
-      padding: 18px;
-      border: 2px solid #ddd;
-      border-radius: 15px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
+textarea {
+  width: 90%;
+  max-width: 650px;
+  height: 130px;
+  margin-top: 25px;
+  padding: 18px;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
 
-    button {
-      display: block;
-      margin: 15px auto;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 12px;
-      background: #5b4bdb;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-    }
+button {
+  display: block;
+  margin: 15px auto;
+  padding: 15px 28px;
+  border: none;
+  border-radius: 12px;
+  background: #5b4bdb;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
 
-    .alanlar {
-      padding: 20px;
-    }
+.sonuc {
+  display: none;
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 18px;
+  text-align: left;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-    .kart {
-      display: inline-block;
-      background: white;
-      margin: 6px;
-      padding: 18px;
-      border-radius: 12px;
-      width: 130px;
-    }
-  </style>
+.soru {
+  margin: 20px 0;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.alanlar {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.kart {
+  display: inline-block;
+  background: white;
+  margin: 6px;
+  padding: 18px;
+  border-radius: 12px;
+  width: 130px;
+}
+
+footer {
+  background: #172033;
+  color: white;
+  padding: 25px;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  🛡️ HAK ASİSTAN
+🛡️ HAK ASİSTAN
 </header>
 
 <section class="hero">
 
-  <div class="maskot">🦉</div>
+<div class="maskot">🦉</div>
 
-  <h1>Sorununu anlat.<br>Haklarını öğren.</h1>
+<h1>Sorununu anlat.<br>Haklarını öğren.</h1>
 
-  <p>
-    Yaşadığın sorunu kendi cümlelerinle anlat.
-    HakAsistan sana hangi adımları atabileceğini göstermeye yardımcı olsun.
-  </p>
+<p class="aciklama">
+Günlük hayatta yaşadığın sorunu kendi cümlelerinle anlat.
+HakAsistan sana doğru adımları bulmanda yardımcı olsun.
+</p>
 
-  <textarea placeholder="Örneğin: Ev sahibim depozitomu vermiyor..."></textarea>
+<textarea id="sorun" placeholder="Örneğin: Ev sahibim depozitomu vermiyor."></textarea>
 
-  <button onclick="sorunGonder()">
-    Haklarımı Öğren →
-  </button>
+<button onclick="baslat()">
+Haklarımı Öğren →
+</button>
 
 </section>
+
+<div id="sorular" class="sonuc">
+
+<h2>🏠 Önce birkaç bilgiye ihtiyacımız var</h2>
+
+<p>
+Sana daha doğru bir yönlendirme yapabilmemiz için aşağıdaki soruları cevapla.
+</p>
+
+<div class="soru">
+<strong>1. Kira sözleşmen yazılı mı?</strong>
+<input id="sozlesme" placeholder="Örneğin: Evet">
+</div>
+
+<div class="soru">
+<strong>2. Evden ne zaman çıktın?</strong>
+<input id="tahliye" placeholder="Örneğin: 15 gün önce">
+</div>
+
+<div class="soru">
+<strong>3. Depozito miktarı ne kadardı?</strong>
+<input id="depozito" placeholder="Örneğin: 20.000 TL">
+</div>
+
+<div class="soru">
+<strong>4. Ev sahibi neden ödeme yapmadığını söylüyor?</strong>
+<input id="neden" placeholder="Bilmiyorum / Hasar olduğunu söylüyor vb.">
+</div>
+
+<button onclick="sonucGoster()">
+Durumumu Değerlendir →
+</button>
+
+</div>
+
+<div id="sonuc" class="sonuc">
+
+<h2>📋 İlk Değerlendirme</h2>
+
+<p>
+Anlattığın durum <strong>kira ve depozito</strong> konusu ile ilgili görünüyor.
+</p>
+
+<h3>⚖️ Ne yapmalısın?</h3>
+
+<p>
+Kira sözleşmeni, depozito ödeme belgesini ve ev sahibiyle yaptığın yazışmaları sakla.
+Talebini mümkün olduğunca yazılı şekilde ilet.
+</p>
+
+<h3>📄 Belgelerini hazırla</h3>
+
+<p>
+• Kira sözleşmesi<br>
+• Depozito ödeme belgesi<br>
+• Ev sahibiyle yazışmalar<br>
+• Varsa teslim/tahliye belgeleri
+</p>
+
+<h3>🏛️ Sonraki adım</h3>
+
+<p>
+HakAsistan'ın sonraki sürümünde olayın ayrıntılarına göre
+güncel mevzuat ve resmî başvuru kanalları gösterilecek.
+</p>
+
+<p>
+⚠️ Bu ekran genel bilgilendirme amaçlıdır. Somut olaylarda
+bir hukuk uzmanından görüş alınması gerekebilir.
+</p>
+
+</div>
 
 <section class="alanlar">
 
-  <h2>Hangi konuda sorun yaşıyorsun?</h2>
+<h2>Diğer yardım alanları</h2>
 
-  <div class="kart">🏠<br>Kira & Ev</div>
-  <div class="kart">🛒<br>Tüketici</div>
-  <div class="kart">💼<br>İş & Çalışma</div>
-  <div class="kart">🚗<br>Trafik & Araç</div>
-  <div class="kart">🏛️<br>Devlet & Kamu</div>
-  <div class="kart">💳<br>Banka & Para</div>
-  <div class="kart">📄<br>Sözleşmeler</div>
+<div class="kart">🛒<br>Tüketici</div>
+<div class="kart">💼<br>İş & Çalışma</div>
+<div class="kart">🚗<br>Trafik & Araç</div>
+<div class="kart">🏛️<br>Devlet & Kamu</div>
+<div class="kart">💳<br>Banka & Para</div>
+<div class="kart">📄<br>Sözleşmeler</div>
 
 </section>
 
+<footer>
+HAK ASİSTAN © 2026<br>
+Hukuki bilgilendirme ve yönlendirme platformu
+</footer>
+
 <script>
-function sorunGonder() {
-  alert("Sorunun alındı. HakAsistan'ın yapay zekâ sistemi bir sonraki aşamada devreye girecek.");
+
+function baslat() {
+
+  let sorun = document.getElementById("sorun").value.trim();
+
+  if (sorun === "") {
+    alert("Lütfen yaşadığın sorunu anlat.");
+    return;
+  }
+
+  document.getElementById("sorular").style.display = "block";
+
+  window.scrollTo({
+    top: document.getElementById("sorular").offsetTop,
+    behavior: "smooth"
+  });
 }
+
+function sonucGoster() {
+
+  document.getElementById("sonuc").style.display = "block";
+
+  window.scrollTo({
+    top: document.getElementById("sonuc").offsetTop,
+    behavior: "smooth"
+  });
+}
+
 </script>
 
 </body>
