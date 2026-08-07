@@ -285,17 +285,63 @@ function baslat() {
 document.getElementById("baslatBtn").innerHTML = "🦉 HAKA analiz ediyor...";
   let sorun = document.getElementById("sorun").value.trim();
 let metin = sorun.toLowerCase();
-  if (
+    if (sorun === "") {
+    alert("Lütfen yaşadığın sorunu anlat.");
+    return;
+    }
+  let modul = "genel";
+
+if (
     metin.includes("kira") ||
     metin.includes("ev sahibi") ||
     metin.includes("depozito")
 ) {
-  document.querySelector("#sorular h2").innerHTML = "🏠 Kira ve Depozito Analizi";
-  }
-  if (sorun === "") {
-    alert("Lütfen yaşadığın sorunu anlat.");
-    return;
-  }
+    modul = "kira";
+}
+
+else if (
+    metin.includes("telefon") ||
+    metin.includes("ayıplı") ||
+    metin.includes("iade") ||
+    metin.includes("ürün")
+) {
+    modul = "tuketici";
+}
+
+else if (
+    metin.includes("işten çıkarıldım") ||
+    metin.includes("maaş") ||
+    metin.includes("kıdem") ||
+    metin.includes("tazminat")
+) {
+    modul = "is";
+}
+
+else if (
+    metin.includes("banka") ||
+    metin.includes("kredi") ||
+    metin.includes("hesap") ||
+    metin.includes("bloke")
+) {
+    modul = "banka";
+}
+
+  if(modul==="kira"){
+    document.querySelector("#sorular h2").innerHTML="🏠 Kira ve Depozito Analizi";
+}
+else if(modul==="tuketici"){
+    document.querySelector("#sorular h2").innerHTML="🛒 Tüketici Hukuku Analizi";
+}
+else if(modul==="is"){
+    document.querySelector("#sorular h2").innerHTML="💼 İş Hukuku Analizi";
+}
+else if(modul==="banka"){
+    document.querySelector("#sorular h2").innerHTML="💳 Banka ve Para Analizi";
+}
+else{
+    document.querySelector("#sorular h2").innerHTML="📋 Önce birkaç bilgiye ihtiyacımız var";
+}
+
 
   setTimeout(function () {
     document.getElementById("sorular").style.display = "block";
