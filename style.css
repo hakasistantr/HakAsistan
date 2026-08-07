@@ -368,3 +368,41 @@ color:#1d4ed8;
     color:#444;
     line-height:1.7;
 }
+.avantajlar{
+    max-width:1200px;
+    margin:70px auto;
+    text-align:center;
+}
+
+.avantajlar h2{
+    font-size:38px;
+    color:#0f172a;
+    margin-bottom:40px;
+}
+
+.avantaj-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+.avantaj{
+    background:white;
+    padding:35px 25px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.avantaj:hover{
+    transform:translateY(-8px);
+}
+
+.avantaj h3{
+    margin:20px 0 10px;
+}
+
+.avantaj p{
+    color:#555;
+    line-height:1.6;
+}
