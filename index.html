@@ -3,268 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HakAsistan | Sorununu Anlat, Haklarını Öğren</title>
+  <title>HAK Asistan</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7f8fc;
+      background: #f5f7fb;
       color: #172033;
+      text-align: center;
     }
 
-    .ust {
+    header {
       background: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-    }
-
-    .logo {
-      font-size: 25px;
+      padding: 20px;
+      font-size: 24px;
       font-weight: bold;
     }
 
-    .logo span {
-      color: #5b4bdb;
-    }
-
     .hero {
-      text-align: center;
-      padding: 70px 20px 40px;
+      padding: 60px 20px;
     }
 
     .maskot {
       font-size: 70px;
-      margin-bottom: 15px;
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
+      font-size: 38px;
+      margin: 15px 0;
     }
 
-    .aciklama {
-      font-size: 19px;
+    p {
       color: #60697a;
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.6;
-    }
-
-    .arama {
-      max-width: 750px;
-      margin: 35px auto;
-      background: white;
-      padding: 12px;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-      display: flex;
-      gap: 10px;
+      font-size: 18px;
     }
 
     textarea {
-      flex: 1;
-      border: none;
-      resize: none;
+      width: 90%;
+      max-width: 650px;
+      height: 140px;
+      margin-top: 25px;
       padding: 18px;
+      border: 2px solid #ddd;
+      border-radius: 15px;
       font-size: 16px;
-      outline: none;
-      min-height: 90px;
+      box-sizing: border-box;
     }
 
     button {
-      background: #5b4bdb;
-      color: white;
+      display: block;
+      margin: 15px auto;
+      padding: 15px 30px;
       border: none;
       border-radius: 12px;
-      padding: 15px 22px;
-      font-size: 16px;
+      background: #5b4bdb;
+      color: white;
+      font-size: 17px;
       font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.9;
     }
 
     .alanlar {
-      max-width: 900px;
-      margin: 30px auto 70px;
-      padding: 0 20px;
-    }
-
-    .alanlar h2 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .kartlar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+      padding: 20px;
     }
 
     .kart {
+      display: inline-block;
       background: white;
-      padding: 25px 15px;
-      text-align: center;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .kart:hover {
-      transform: translateY(-3px);
-    }
-
-    .ikon {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .kart strong {
-      display: block;
-      font-size: 15px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #172033;
-      color: white;
-      font-size: 13px;
-    }
-
-    @media (max-width: 700px) {
-      h1 {
-        font-size: 31px;
-      }
-
-      .arama {
-        display: block;
-      }
-
-      button {
-        width: 100%;
-        margin-top: 8px;
-      }
-
-      .kartlar {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      margin: 6px;
+      padding: 18px;
+      border-radius: 12px;
+      width: 130px;
     }
   </style>
 </head>
 
 <body>
 
-  <header class="ust">
-    <div class="logo">🛡️ HAK<span>ASİSTAN</span></div>
-    <div>🇹🇷 Türkiye</div>
-  </header>
+<header>
+  🛡️ HAK ASİSTAN
+</header>
 
-  <section class="hero">
+<section class="hero">
 
-    <div class="maskot">🦉</div>
+  <div class="maskot">🦉</div>
 
-    <h1>Sorununu anlat.<br>Haklarını öğren.</h1>
+  <h1>Sorununu anlat.<br>Haklarını öğren.</h1>
 
-    <p class="aciklama">
-      Günlük hayatta yaşadığın hukuki sorunları kendi cümlelerinle anlat.
-      HakAsistan, hangi adımları atabileceğini anlamana yardımcı olsun.
-    </p>
+  <p>
+    Yaşadığın sorunu kendi cümlelerinle anlat.
+    HakAsistan sana hangi adımları atabileceğini göstermeye yardımcı olsun.
+  </p>
 
-    <div class="arama">
+  <textarea placeholder="Örneğin: Ev sahibim depozitomu vermiyor..."></textarea>
 
-      <textarea
-        placeholder="Örneğin: Ev sahibim depozitomu vermiyor. Ne yapabilirim?"
-      ></textarea>
+  <button onclick="sorunGonder()">
+    Haklarımı Öğren →
+  </button>
 
-      <button onclick="analizBaslat()">
-        Haklarımı Öğren →
-      </button>
+</section>
 
-    </div>
+<section class="alanlar">
 
-  </section>
+  <h2>Hangi konuda sorun yaşıyorsun?</h2>
 
-  <section class="alanlar">
+  <div class="kart">🏠<br>Kira & Ev</div>
+  <div class="kart">🛒<br>Tüketici</div>
+  <div class="kart">💼<br>İş & Çalışma</div>
+  <div class="kart">🚗<br>Trafik & Araç</div>
+  <div class="kart">🏛️<br>Devlet & Kamu</div>
+  <div class="kart">💳<br>Banka & Para</div>
+  <div class="kart">📄<br>Sözleşmeler</div>
 
-    <h2>Hangi konuda yardıma ihtiyacın var?</h2>
+</section>
 
-    <div class="kartlar">
-
-      <div class="kart">
-        <div class="ikon">🏠</div>
-        <strong>Kira & Ev</strong>
-      </div>
-
-      <div class="kart">
-        <div class="ikon">🛒</div>
-        <strong>Tüketici</strong>
-      </div>
-
-      <div class="kart">
-        <div class="ikon">💼</div>
-        <strong>İş & Çalışma</strong>
-      </div>
-
-      <div class="kart">
-        <div class="ikon">🚗</div>
-        <strong>Trafik & Araç</strong>
-      </div>
-
-      <div class="kart">
-        <div class="ikon">🏛️</div>
-        <strong>Devlet & Kamu</strong>
-      </div>
-
-      <div class="kart">
-        <div class="ikon">💳</div>
-        <strong>Banka & Para</strong>
-      </div>
-
-      <div class="kart">
-        <div class="ikon">📄</div>
-        <strong>Sözleşmeler</strong>
-      </div>
-
-      <div class="kart">
-        <div class="ikon">⚖️</div>
-        <strong>Diğer Hukuki Sorunlar</strong>
-      </div>
-
-    </div>
-
-  </section>
-
-  <footer>
-    HakAsistan © 2026 — Hukuki bilgilendirme ve yönlendirme platformu
-  </footer>
-
-  <script>
-    function analizBaslat() {
-      const metin = document.querySelector("textarea").value.trim();
-
-      if (!metin) {
-        alert("Lütfen yaşadığın sorunu önce anlat.");
-        return;
-      }
-
-      alert(
-        "Harika! Sorununu aldık. Yapay zekâ analiz sistemi bir sonraki aşamada bağlanacak."
-      );
-    }
-  </script>
+<script>
+function sorunGonder() {
+  alert("Sorunun alındı. HakAsistan'ın yapay zekâ sistemi bir sonraki aşamada devreye girecek.");
+}
+</script>
 
 </body>
 </html>
